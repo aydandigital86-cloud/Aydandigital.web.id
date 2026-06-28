@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AYDAN DIGITAL | AI Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+body{font-family:Poppins,sans-serif;background:#020617;color:#fff}
+canvas{position:fixed;inset:0}
+#ui{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{width:min(900px,95%);background:rgba(255,255,255,.08);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.15);border-radius:30px;padding:40px;text-align:center;box-shadow:0 0 60px rgba(0,180,255,.25)}
+h1{font:700 50px Orbitron,sans-serif;letter-spacing:4px}
+#type{height:34px;color:#67e8f9;margin:12px 0;font-weight:600}
+p{color:#dbeafe;line-height:1.8}
+#ring{width:170px;height:170px;border-radius:50%;margin:0 auto 20px;border:2px solid #38bdf8;display:grid;place-items:center;position:relative;animation:spin 12s linear infinite}
+#ring:before,#ring:after{content:"";position:absolute;border-radius:50%;border:2px solid rgba(34,197,94,.4);inset:-12px}
+#ring:after{inset:-24px;border-color:rgba(59,130,246,.25)}
+.core{width:55px;height:55px;background:#38bdf8;border-radius:50%;box-shadow:0 0 30px #38bdf8;animation:pulse 2s infinite}
+@keyframes pulse{50%{transform:scale(1.2);box-shadow:0 0 70px #38bdf8}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.grid{position:fixed;inset:0;background:linear-gradient(rgba(0,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,255,.06) 1px,transparent 1px);background-size:40px 40px;transform:perspective(800px) rotateX(75deg) translateY(40%);opacity:.3}
+.bar{height:12px;background:#1e293b;border-radius:20px;overflow:hidden;margin:22px 0}.fill{height:100%;background:linear-gradient(90deg,#06b6d4,#22c55e,#3b82f6);width:0;animation:load 6s infinite}
+@keyframes load{0%{width:10%}60%{width:82%}100%{width:100%}}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.box{background:rgba(255,255,255,.06);padding:14px;border-radius:14px;min-width:90px}.box b{display:block;font-size:28px}
+.badges{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}.badge{padding:8px 14px;border-radius:20px;background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4)}
+.btn{display:inline-block;margin:8px;padding:12px 22px;border-radius:30px;color:#fff;text-decoration:none;border:1px solid #38bdf8}
+footer{margin-top:20px;color:#94a3b8}
+.rocket{position:fixed;font-size:42px;left:-50px;bottom:-50px;animation:r 16s linear infinite;opacity:.5}
+@keyframes r{to{transform:translate(120vw,-120vh)}}
+</style></head><body>
+<canvas id="c"></canvas><div class="grid"></div><div class="rocket">🚀</div>
+<div id="ui"><div class="card">
+<div id="ring"><div class="core"></div></div>
+<h1>AYDAN DIGITAL</h1><div id="type"></div>
+<p>Building the next generation platform for Artificial Intelligence, Automation, Cloud Technology, Cyber Security, and Digital Innovation.</p>
+<div class="badges"><div class="badge">AI Online</div><div class="badge">Cloud Ready</div><div class="badge">Security Active</div></div>
+<div class="bar"><div class="fill"></div></div>
+<div class="stats">
+<div class="box"><b id=d>0</b>Hari</div><div class="box"><b id=h>0</b>Jam</div><div class="box"><b id=m>0</b>Menit</div><div class="box"><b id=s>0</b>Detik</div>
+</div>
+<div style="margin-top:20px">
+<a class="btn" href="mailto:admin@aydandigital.web.id">Email</a>
+<a class="btn" href="https://github.com/aydandigital86-cloud">GitHub</a>
+</div>
+<footer>©2026 AYDAN DIGITAL • Version 0.9 Beta</footer>
+</div></div>
+<script>
+const words=["Website Sedang Dalam Tahap Pengembangan","Artificial Intelligence","Automation","Cyber Security","Cloud Computing","Digital Innovation"];
+let wi=0,ci=0,fwd=true;function tick(){let w=words[wi];type.textContent=w.slice(0,ci);if(fwd){ci++;if(ci>w.length){fwd=false;setTimeout(tick,900);return}}else{ci--;if(ci<0){fwd=true;wi=(wi+1)%words.length;ci=0}}setTimeout(tick,fwd?70:30)}tick();
+const t=new Date("2026-12-31T23:59:59").getTime();setInterval(()=>{let g=Math.max(0,t-Date.now());d.textContent=Math.floor(g/86400000);h.textContent=Math.floor(g%86400000/36e5);m.textContent=Math.floor(g%36e5/6e4);s.textContent=Math.floor(g%6e4/1e3)},1000);
+const cv=document.getElementById('c'),x=cv.getContext('2d');function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();onresize=rs;
+let stars=[...Array(250)].map(()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*2+0.3,v:Math.random()*1.5+.2}));
+(function a(){x.clearRect(0,0,cv.width,cv.height);for(let s of stars){x.fillStyle='rgba(120,220,255,.9)';x.beginPath();x.arc(s.x,s.y,s.r,0,7);x.fill();s.y+=s.v;if(s.y>cv.height){s.y=-5;s.x=Math.random()*cv.width}}requestAnimationFrame(a)})();
+</script></body></html>
